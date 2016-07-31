@@ -7,8 +7,10 @@ framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
 widgets     : []            # {mathjax, quiz, bootstrap}
+ext_widgets : {rCharts: libraries/nvd3}
 mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
+
 ---
 
 ## US Storms and Its impact
@@ -26,12 +28,7 @@ knit        : slidify::knit2slides
  - 14 834 deaths
  - 139 445 injuries
  - $358 billion worth of damage
- -asdf
- -asdf
- -sadf
- -asdf
- -sadf
- -asdf
+ 
 
 ---
 

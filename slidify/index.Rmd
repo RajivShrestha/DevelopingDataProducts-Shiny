@@ -7,8 +7,10 @@ framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
 widgets     : []            # {mathjax, quiz, bootstrap}
+ext_widgets : {rCharts: libraries/nvd3}
 mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
+
 ---
 
 ## US Storms and Its impact
@@ -34,19 +36,12 @@ dt.agg.year <- dt[, list(Count=sum(COUNT), Injuries=sum(INJURIES), Fatalities=su
  - `r format(sum(dt$FATALITIES), big.mark=' ')` deaths
  - `r format(sum(dt$INJURIES), big.mark=' ')` injuries
  - $`r format(round((sum(dt$PROPDMG) + sum(dt$CROPDMG)) / 1000), big.mark=' ')` billion worth of damage
- -asdf
- -asdf
- -sadf
- -asdf
- -sadf
- -asdf
+ 
 
 ---
 
 ## Events chart
 ```{r nvd3plot2, results = 'asis', comment = NA, message = F, echo = F} 
-
-#####require(knitr)
 data <- melt(dt.agg.year[, list(YEAR=YEAR, Injuries=Injuries, Fatalities=Fatalities)], id='YEAR')
 populationImpact <- nPlot(
     value ~ YEAR, group = 'variable', data = data[order(-YEAR, variable, decreasing = T)],
