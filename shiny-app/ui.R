@@ -23,12 +23,9 @@ shinyUI(
                         
                         # Time series data
                         tabPanel(p(icon("line-chart"), "By year"),
-                                 h4('Number of events by year', align = "center"),
-                                 showOutput("eventsByYear", "nvd3"),
-                                 h4('Population impact by year', align = "center"),
-                                 showOutput("populationImpact", "nvd3"),
-                                 h4('Economic impact by year', align = "center"),
-                                 showOutput("economicImpact", "nvd3")
+                                 
+                                  h4('Population impact by year', align = "center"),
+                                  showOutput("populationImpact", "nvd3")
                         )                     
                                                 
                     )

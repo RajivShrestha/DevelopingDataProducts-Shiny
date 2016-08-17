@@ -40,24 +40,6 @@ compute_affected <- function(dt, category) {
     })
 }
 
-#' Add Damages column based on category
-#' 
-#' @param dt data.table
-#' @param category character
-#' @return data.table
-#'
-compute_damages <- function(dt, category) {
-    dt %>% mutate(Damages = {
-        if(category == 'both') {
-            PROPDMG + CROPDMG
-        } else if(category == 'crops') {
-            CROPDMG
-        } else {
-            PROPDMG
-        }
-    })
-}
-
 #' Prepare plots of impact by year
 #'
 #' @param dt data.table
@@ -77,24 +59,4 @@ plot_impact_by_year <- function(dt, dom, yAxisLabel, desc = FALSE) {
     impactPlot$xAxis(axisLabel = "Year", width = 70)
     
     impactPlot
-}
-
-#' Prepare plot of number of events by year
-#'
-#' @param dt data.table
-#' @param dom
-#' @param yAxisLabel
-#' @return plot
-
-plot_events_by_year <- function(dt, dom = "eventsByYear", yAxisLabel = "Count") {
-    eventsByYear <- nPlot(
-        Count ~ Year,
-        data = dt,
-        type = "lineChart", dom = dom, width = 650
-    )
-        
-    eventsByYear$chart(margin = list(left = 100))
-    eventsByYear$yAxis( axisLabel = yAxisLabel, width = 80)
-    eventsByYear$xAxis( axisLabel = "Year", width = 70)
-    eventsByYear
 }

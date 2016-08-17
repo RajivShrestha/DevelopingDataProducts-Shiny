@@ -54,31 +54,14 @@ shinyServer(function(input, output, session) {
     })
     
     
-    # Render Plots
-    
-    # Events by year
-    output$eventsByYear <- renderChart({
-       plot_events_by_year(dt.agg.year())
-    })
-    
     # Population impact by year
     output$populationImpact <- renderChart({
         plot_impact_by_year(
             dt = dt.agg.year() %>% select(Year, Injuries, Fatalities),
             dom = "populationImpact",
-            yAxisLabel = "Affected",
-            desc = TRUE
+            yAxisLabel = "Affected"
         )
     })
     
-    # Economic impact by state
-    output$economicImpact <- renderChart({
-        plot_impact_by_year(
-            dt = dt.agg.year() %>% select(Year, Crops, Property),
-            dom = "economicImpact",
-            yAxisLabel = "Total damage (Million USD)"
-        )
-    })
-	
 })
 
